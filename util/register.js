@@ -1,5 +1,5 @@
 const fs = require('fs')
-
+const chalk = require('chalk')
 const { trim, isEmpty } = require('./util')
 
 const mapMockRouter = (router, mockMap) => {
@@ -30,14 +30,14 @@ const registerRoute = (router, routes) => {
       console.log(`[ERROR] ${method} is not a restful method`)
       return
     }
-    console.log(`register a mock route: ${method} ==> ${uri}`)
+    console.log(chalk.blue('register a mock route: ', chalk.bgYellow(`${method} ==> ${uri}`)))
     router[restMap[method]].call(router, uri, func)
   })
 }
 
 const mockServer = mockMap => {
   if (isEmpty(mockMap)) {
-    console.log('No route config in mock dir!')
+    console.log(chalk.red('No route config in mock dir!'))
   }
 
   const router = require('express').Router()

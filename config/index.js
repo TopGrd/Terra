@@ -14,5 +14,5 @@ module.exports = {
     },
   },
   port: 8080,
-  mock: false,
+  mock: true,
 }

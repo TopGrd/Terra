@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "set NODE_ENV=production && node ./dev.server.js",
     "build": "set NODE_ENV=production && webpack --config ./webpack.prod.config.js --progress",
     "dll": "webpack --config ./webpack.dll.config.js"
   },
-  "keywords": [],
+  "keywords": ["webpack"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
