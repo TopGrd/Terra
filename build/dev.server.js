@@ -1,22 +1,25 @@
 const path = require('path')
 const chalk = require('chalk')
+const ora = require('ora')
 const express = require('express')
 const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
 const WebpackDevMiddleware = require('webpack-dev-middleware')
 const WebpackHotMiddleware = require('webpack-hot-middleware')
-const config = require('./webpack.dev.config')
+const config = require('./dev')
 const mockRoutes = require('./util/register')
 const mockMap = require('./util/assign')
 
-const { port, proxy, mock } = require('./config')
+const { port, proxy, mock, framework } = require('../terra.config')
 
-console.log('Starting develop server...')
-console.log('compiling')
+const spinner = ora('Starting develop server...')
+spinner.start()
+console.log()
 const app = express()
 app.use(express.static('./dist/static'))
 const compiler = webpack(config)
 
+// dev
 const devMiddleWare = WebpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,
@@ -65,6 +68,7 @@ const server = app.listen(port, () => {
 
   const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
   const host = process.env.HOST || 'localhost'
+  spinner.stop()
   console.log('Your application is running at:')
   console.log()
   const appUrl = `${chalk.cyan(`${protocol}://${host}:${port}/`)}`

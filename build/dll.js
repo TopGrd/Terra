@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const vendor = require('./config').vendor
+const vendor = require('../terra.config').vendor
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const { DllPlugin, UglifyJsPlugin } = webpack
@@ -11,15 +11,15 @@ module.exports = {
     vendor,
   },
   output: {
-    path: resolve(__dirname, './static/js'),
+    path: resolve(__dirname, '../static/js'),
     filename: '[name].dll.js',
     library: '[name]_library',
   },
   plugins: [
     new DllPlugin({
-      path: resolve(__dirname, '.', '[name]-manifest.json'),
+      path: resolve(__dirname, '..', '[name]-manifest.json'),
       name: '[name]_library',
-      context: resolve(__dirname, 'src'),
+      context: resolve(__dirname, '../src'),
     }),
 
     new webpack.optimize.UglifyJsPlugin({
