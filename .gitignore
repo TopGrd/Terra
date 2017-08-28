@@ -3,3 +3,6 @@ dist
 *.log
 .vscode
 static
+.clocignore
+manifest.json
+result.json

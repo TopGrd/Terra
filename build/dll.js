@@ -13,13 +13,13 @@ module.exports = {
   output: {
     path: resolve(__dirname, '../static/js'),
     filename: '[name].dll.js',
-    library: '[name]_library',
+    library: '[name]',
   },
   plugins: [
     new DllPlugin({
-      path: resolve(__dirname, '..', '[name]-manifest.json'),
-      name: '[name]_library',
-      context: resolve(__dirname, '../src'),
+      context: resolve(__dirname, '../'),
+      path: resolve(__dirname, '..', 'manifest.json'),
+      name: '[name]',
     }),
 
     new webpack.optimize.UglifyJsPlugin({

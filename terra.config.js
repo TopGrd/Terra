@@ -1,5 +1,5 @@
 module.exports = {
-  vendor: ['lodash'],
+  vendor: ['lodash', 'vue', 'vue-router'],
   proxy: {
     '/api': {
       target: 'http://127.0.0.1:8080',

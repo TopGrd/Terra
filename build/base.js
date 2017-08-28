@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const { resolve } = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
-
+const vendor = require('../terra.config').vendor
 module.exports = {
   entry: {
     main: ['./src/main.js'],

@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-const extractStyles = true
+const extractStyles = process.env.NODE_ENV === 'development' ? false : true
 
 const cssLoader = [
   { loader: 'css-loader', options: { minimize: process.env.NODE_ENV === 'production' } },
@@ -56,6 +56,7 @@ module.exports = {
           css: vueStyleLoader(cssLoader),
           scss: vueStyleLoader(scssLoader),
           sass: vueStyleLoader(sassLoader),
+          extractCSS: extractStyles
         },
       },
       {

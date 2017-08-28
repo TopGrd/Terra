@@ -19,6 +19,7 @@ const cleanOptions = {
   verbose: true,
   dry: false,
 }
+console.log(__dirname)
 
 module.exports = merge(baseConfig, {
   devtool: '#source-map',
@@ -34,8 +35,8 @@ module.exports = merge(baseConfig, {
       sourceMap: true,
     }),
     new DllReferencePlugin({
-      context: resolve(__dirname, '../src'),
-      manifest: require('../vendor-manifest.json'),
+      context: resolve(__dirname, '../'),
+      manifest: require('../manifest.json'),
     }),
     new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({

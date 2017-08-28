@@ -19,6 +19,10 @@ module.exports = merge(baseConfig, {
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      context: resolve(__dirname, '../'),
+      manifest: require('../manifest.json'),
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin("style.css"),
