@@ -51,6 +51,14 @@ module.exports = merge(baseConfig, {
       },
       chunksSortMode: 'dependency',
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'lib',
+      minChunks: ({ resource }) => (
+        resource &&
+        resource.indexOf('node_modules') >= 0 &&
+        resource.match(/\.js$/)
+      ),
+    }),
     new CopyWebpackPlugin([
       {
         from: resolve(__dirname, '../static'),

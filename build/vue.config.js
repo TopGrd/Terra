@@ -33,7 +33,7 @@ module.exports = {
       resolve(__dirname, '../node_modules')
     ],
     alias: {
-      'vue$': 'vue/dist/vue.common.js',
+      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve(__dirname, '../src'),
       'component': resolve(__dirname, '../src/component'),
     },
@@ -52,7 +52,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {   
+        options: {
           css: vueStyleLoader(cssLoader),
           scss: vueStyleLoader(scssLoader),
           sass: vueStyleLoader(sassLoader),
@@ -84,7 +84,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: 'fonts/[name].[ext]',          
+          name: 'fonts/[name].[ext]',
         }
       }
     ],

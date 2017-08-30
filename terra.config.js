@@ -1,5 +1,6 @@
 module.exports = {
-  vendor: ['lodash', 'vue', 'vue-router'],
+  vendor: ['vue/dist/vue.esm.js', 'vue-router'],
+  lib: ['lodash'],
   proxy: {
     '/api': {
       target: 'http://127.0.0.1:8080',

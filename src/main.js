@@ -1,10 +1,11 @@
 import Vue from 'vue'
 
-import router from './router'
 import App from './App'
+import router from './router'
 
 Vue.config.devtools = true
 console.log(router)
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

@@ -4,8 +4,9 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const base = require('./base')
-const { framework } = require('../terra.config')
+const { framework, port } = require('../terra.config')
 
 baseConfig = framework === 'vue' ? merge(base, require('./vue.config')) : merge(base, require('./react.config'))
 // register hot
@@ -38,6 +39,15 @@ module.exports = merge(baseConfig, {
       },
       chunksSortMode: 'dependency',
     }),
-    new FriendlyErrorsWebpackPlugin()
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'lib',
+      minChunks: ({ resource }) => (
+        resource &&
+        resource.indexOf('node_modules') >= 0 &&
+        resource.match(/\.js$/)
+      ),
+    }),
+    new OpenBrowserPlugin({ url: `http://localhost:${port}` }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 })
