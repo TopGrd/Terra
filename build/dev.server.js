@@ -16,7 +16,7 @@ const spinner = ora('Starting develop server...')
 spinner.start()
 console.log()
 const app = express()
-app.use(express.static('./dist/static'))
+app.use(express.static('./static'))
 const compiler = webpack(config)
 
 // dev
