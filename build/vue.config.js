@@ -56,7 +56,6 @@ module.exports = {
           css: vueStyleLoader(cssLoader),
           scss: vueStyleLoader(scssLoader),
           sass: vueStyleLoader(sassLoader),
-          extractCSS: extractStyles
         },
       },
       {
